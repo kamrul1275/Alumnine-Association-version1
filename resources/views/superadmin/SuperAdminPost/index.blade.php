@@ -14,29 +14,40 @@
         <thead>
         <tr>
             <th>No</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
+          <th>Titel</th>
+          <th>Heading</th>
+          <th>Description</th>
           <th>Image</th>
+          <th>SuperAdmin id</th>
           <th>Action</th>
 
         </tr>
         </thead>
         <tbody>
-{{-- @foreach ($createadminPass as $key=>$iteam) --}}
+ @foreach ($superadminPass as $key=>$iteam)
 <tr>
-    <td>1</td>
-  <td>grrg</td>
-  <td>grgr</td>
-  <td>grgrg</td>
-  <td>grgrgr</td>
+    <td>{{ $key+1 }}</td>
+  <td>{{ $iteam->titel  }}</td>
+  <td>{{ $iteam->heading  }}</td>
+  <td>{{ $iteam->description  }}</td>
+  <td>
+
+
+    <img src="{{ url('public/Image/'.$iteam->image) }}"
+ style="height: 100px; width: 150px;">
+
+    </td>
+
+
+  <td>{{ $iteam->superadmin_id}}
+</td>
   <td>
 
     <a href="" class="btn btn-success"><i class="las la-edit"></i> Edit</a>
     <a href="" class="btn btn-danger"><i class="las la-trash"></i>  Delete</a>
   </td>
 </tr>
-{{-- @endforeach --}}
+ @endforeach
 
 
 

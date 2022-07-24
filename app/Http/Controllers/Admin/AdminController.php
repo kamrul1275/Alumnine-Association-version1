@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Post;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,6 +71,75 @@ class AdminController extends Controller
 
 
     }
+
+
+
+
+
+
+
+// admin post area
+
+
+
+public function AdminCreatePostww()
+{
+
+return view('admin.AdminPost.create');
+
+
+}
+
+
+
+
+
+public function AdminCreatePoststore(Request $request)
+{
+    $validated = $request->validate([
+        'titel' => 'required',
+        'heading' => 'required',
+        'description' => 'required',
+        'image' => 'required',
+    ]);
+
+
+
+
+ $superpost = new Post;
+ $superpost->titel =$request->titel;
+ $superpost->heading =$request->heading;
+
+ $superpost->description =$request->description;
+
+ if($request->file('image')){
+ $file= $request->file('image');
+ $filename= $file->getClientOriginalName();
+ $file-> move(public_path('public/Image'), $filename);
+$superpost['image']= $filename;
+ }
+
+$superpost->user_id =auth()->check() ? auth()->user()->id : null;
+
+ $superpost-> superadmin_id =  auth()->guard('superadmin')->check() ? auth()->guard('superadmin')->user()->id : null;
+ $superpost-> admin_id =  auth()->guard('admin')->check() ? auth()->guard('admin')->user()->id : null;
+
+ $superpost->save();
+ Session::flash('Msg','Post upload Succesfully');
+
+return redirect()->back();
+}
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.

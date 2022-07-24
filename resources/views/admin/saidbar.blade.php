@@ -29,7 +29,7 @@
           <div class="image">
 
 
- 
+
             </a>
 
 
@@ -68,7 +68,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                 Sub Category
+                 Testing  Category
                   <i class="fas fa-angle-left right"></i>
                   <span class="badge badge-info right">6</span>
                 </p>
@@ -93,29 +93,24 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                Post Part
+                Post Part.....
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
+                  <a href="{{ url('/admin-post') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>ChartJS</p>
+                    <p>Create Post</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/charts/flot.html" class="nav-link">
+                  <a href="{{ url('/admin/create/Show') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Flot</p>
+                    <p>All Post</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="pages/charts/inline.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inline</p>
-                  </a>
-                </li>
+
               </ul>
             </li>
             <li class="nav-item has-treeview">

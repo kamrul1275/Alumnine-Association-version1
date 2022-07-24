@@ -17,6 +17,7 @@ class Post extends Model
         'image',
         'user_id',
         'superadmin_id',
+        'admin_id',
     ];
     public function User()
     {

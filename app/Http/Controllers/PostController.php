@@ -14,9 +14,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function AllPost()
-    {
-        return view('superadmin.SuperAdminPost.index');
+    public function AllPostSuperAdmin()
+    {   $superadminPass = post::all();
+        return view('superadmin.SuperAdminPost.index', compact('superadminPass'));
     }
 
     /**
@@ -47,8 +47,8 @@ class PostController extends Controller
 $superpost = new Post;
 $superpost->titel =$request->titel;
 $superpost->heading =$request->heading;
-$superpost->description =$request->description;
 
+$superpost->description =$request->description;
 
 if($request->file('image')){
     $file= $request->file('image');
@@ -57,10 +57,9 @@ if($request->file('image')){
     $superpost['image']= $filename;
 }
 
-// $superpost-> user_id = auth()->user()->id;
+$superpost->user_id =auth()->check() ? auth()->user()->id : null;
 
-
-$superpost->superadmin_id = $request->superadmin_id;
+ $superpost-> superadmin_id =  auth()->guard('superadmin')->check() ? auth()->guard('superadmin')->user()->id : null;
 
 $superpost->save();
 Session::flash('Msg','Post upload Succesfully');
@@ -112,4 +111,26 @@ Session::flash('Msg','Post upload Succesfully');
     {
         //
     }
+
+
+
+
+
+
+    public function AdminCreatePostww()
+    {
+
+    return view('admin.AdminPost.create');
+
+
+    }
+
+
+
+
+
+
+
+
+
 }

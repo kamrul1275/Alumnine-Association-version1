@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\AdminController;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SubCategoryController;
@@ -42,7 +43,7 @@ Route::group(['prefix'=> '/SuperAdmin', 'middleware'=> 'superadmin'],function(){
 
 Route::get('/create/post',[PostController::class, 'CreatePost'])->name('post.CreatePost');
 Route::post('/create/post',[PostController::class, 'PostStore'])->name('post.PostStore');
-Route::get('/all/post',[PostController::class, 'AllPost'])->name('post.AllPost');
+Route::get('/view-post',[PostController::class, 'AllPostSuperAdmin'])->name('post.AllPost');
 
 
 
@@ -95,6 +96,23 @@ Route::group(['middleware'=>'admin'], function(){
 
 
 Route::get('/admin-logout', [App\Http\Controllers\Admin\AdminController::class, 'AdminLogout']);
+
+
+
+
+
+// admin post part
+Route::get('/admin-post', [AdminController::class, 'AdminCreatePostww']);
+
+Route::post('/admin-store', [AdminController::class, 'AdminCreatePoststore']);
+
+
+
+
+
+
+
+
 
 
 

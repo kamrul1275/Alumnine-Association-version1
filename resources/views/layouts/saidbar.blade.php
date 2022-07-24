@@ -98,9 +98,9 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{url('SuperAdmin/all/post')}}" class="nav-link">
+                  <a href="{{url('/SuperAdmin/view-post')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>All Post</p>
+                    <p>All Post list</p>
                   </a>
                 </li>
               </ul>

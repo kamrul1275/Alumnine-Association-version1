@@ -22,9 +22,11 @@ class CreatePostsTable extends Migration
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('superadmin_id')->nullable();
+            $table->unsignedBigInteger('admin_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('superadmin_id')->references('id')->on('super_admins')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
 
             $table->rememberToken();
             $table->timestamps();
